@@ -25,7 +25,7 @@ import bc.desafio_quality.service.PropertyCalculatorServiceImpl;
 class PropertyCalculatorControllerTest{
 
 	@Mock
-	static PropertyCalculatorServiceImpl service;//Mockito.mock(PropertyCalculatorServiceImpl.class);
+	static PropertyCalculatorServiceImpl service;
 
 	@InjectMocks
 	private PropertyCalculatorController controller;
