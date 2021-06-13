@@ -9,8 +9,8 @@ import lombok.Setter;
 
 @Validated
 @Getter @Setter
-public class PropertyTotalAreaRequestDTO extends PropertyDTO {
-    public PropertyTotalAreaRequestDTO(String propMame, String propDistrict, List<RoomDTO>rooms){
+public class PropertyBiggestRoomRequestDTO extends PropertyDTO {
+    public PropertyBiggestRoomRequestDTO(String propMame, String propDistrict, List<RoomDTO> rooms){
         super(propMame, propDistrict, rooms);
     }
 }

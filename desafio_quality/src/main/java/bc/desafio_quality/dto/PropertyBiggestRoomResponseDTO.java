@@ -13,9 +13,13 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PropertyPriceResponseDTO {
-    @JsonProperty("price")
-    private double price = 0D;
-    private String name;
-    private String district;
+public class PropertyBiggestRoomResponseDTO {
+    @JsonProperty("property_name")
+    private String propertyName;
+
+    @JsonProperty("biggest_room")
+    private RoomDTO biggestRoom;
+
+    @JsonProperty("biggest_room_area")
+    private Double biggestRoomArea;
 }

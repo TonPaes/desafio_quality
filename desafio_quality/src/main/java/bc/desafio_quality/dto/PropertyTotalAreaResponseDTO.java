@@ -12,6 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PropertyTotalAreaResponseDTO {
-    private Double total;
+    private Double total = 0D;
     private String houseName;
 }

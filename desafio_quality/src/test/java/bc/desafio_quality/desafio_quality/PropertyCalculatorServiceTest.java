@@ -1,47 +1,70 @@
 package bc.desafio_quality.desafio_quality;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
 
 import bc.desafio_quality.desafio_quality.utils.MocksDTO;
+import bc.desafio_quality.dto.DistrictDTO;
+import bc.desafio_quality.dto.PropertyBiggestRoomRequestDTO;
+import bc.desafio_quality.dto.PropertyBiggestRoomResponseDTO;
+import bc.desafio_quality.dto.PropertyGetAreaRoomsRequestDTO;
+import bc.desafio_quality.dto.PropertyGetAreaRoomsResponseDTO;
 import bc.desafio_quality.dto.PropertyPriceRequestDTO;
 import bc.desafio_quality.dto.PropertyPriceResponseDTO;
 import bc.desafio_quality.dto.PropertyTotalAreaRequestDTO;
 import bc.desafio_quality.dto.PropertyTotalAreaResponseDTO;
-import bc.desafio_quality.service.PropertyCalculatorService;
+import bc.desafio_quality.model.DistrictRepository;
 import bc.desafio_quality.service.PropertyCalculatorServiceImpl;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class PropertyCalculatorServiceTest {
-    private PropertyCalculatorService service = new PropertyCalculatorServiceImpl(); 
+    @Mock
+    static DistrictRepository districtRepository;
 
+    @InjectMocks
+    private PropertyCalculatorServiceImpl service;
 
-    static PropertyTotalAreaRequestDTO mockTotalAreaRequest = MocksDTO.getPropertyTotalAreaRequest();
-    static PropertyTotalAreaResponseDTO mockTotalAreaResponse = MocksDTO.getPropertyTotalAreaResponse();
-    static PropertyPriceRequestDTO mockPriceRequest = MocksDTO.getPropertyPriceRequest();
-
+    static PropertyTotalAreaRequestDTO mockedTotalAreaRequest = MocksDTO.getPropertyTotalAreaRequest();
+    static PropertyTotalAreaResponseDTO mockedTotalAreaResponse = MocksDTO.getPropertyTotalAreaResponse();
+    static PropertyPriceRequestDTO mockedPriceRequest = MocksDTO.getPropertyPriceRequest();
+    static PropertyPriceResponseDTO mockedPriceResponse = MocksDTO.getPropertyPriceResponseDTO();
+    static PropertyBiggestRoomResponseDTO mockedRoomResponse = MocksDTO.getPropertyBiggestRoomResponse();
+    static PropertyBiggestRoomRequestDTO mockedRoomResquest = MocksDTO.getPropertyBiggestRoomRequestDTO();
+    static DistrictDTO mockedDistrictDTO = MocksDTO.getDistrict();
+    static PropertyGetAreaRoomsRequestDTO mockedRoomsAreaRequest = MocksDTO.getPropertyRoomsAreaRequest();
+    static PropertyGetAreaRoomsResponseDTO mockedRoomsAreaResponse = MocksDTO.getPropertyRoomsAreaResponse();
+    
     @Test
     public void testGetTotalArea(){
-        PropertyTotalAreaResponseDTO response = service.totalArea(mockTotalAreaRequest);
-        //TODO: total area from house
+        PropertyTotalAreaResponseDTO response = service.totalArea(mockedTotalAreaRequest);
+        assertEquals(mockedTotalAreaResponse.getTotal(), response.getTotal());
     }
-
+        
+    @Test
     public void testGetTotalPrice(){
-        PropertyPriceResponseDTO response = service.totalPrice(mockPriceRequest);
-        //TODO: total price from property
+        when(districtRepository.getByName("Mooca")).thenReturn(mockedDistrictDTO);
+        PropertyPriceResponseDTO response = service.totalPrice(mockedPriceRequest);
+        assertEquals(mockedPriceResponse.getPrice(), response.getPrice());
     }
 
+    @Test
     public void testGetBiggestRoom(){
-        //TODO: biggestRoom of the property
+        PropertyBiggestRoomResponseDTO response = service.biggestRoom(mockedRoomResquest);
+        assertEquals(mockedRoomResponse, response);
     }
+
+    @Test
     public void testGetAreaOfRooms(){
-        //TODO:
+        PropertyGetAreaRoomsResponseDTO response = service.areaPerRoom(mockedRoomsAreaRequest);
+        assertEquals(mockedRoomsAreaResponse, response);
+        
     }
 }

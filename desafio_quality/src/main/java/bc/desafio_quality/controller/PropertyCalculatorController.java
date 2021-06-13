@@ -22,13 +22,19 @@ public class PropertyCalculatorController {
     private  PropertyCalculatorService propertyCalculatorservice = new PropertyCalculatorServiceImpl();
 
     @PostMapping("/totalArea")
-    public ResponseEntity<PropertyTotalAreaResponseDTO> totalArea(@Valid @RequestBody PropertyTotalAreaRequestDTO request){
-       return ResponseEntity.status(HttpStatus.OK).body(propertyCalculatorservice.totalArea(request));
+    public ResponseEntity<PropertyTotalAreaResponseDTO> totalArea(
+            @Valid 
+            @RequestBody 
+            PropertyTotalAreaRequestDTO request){
+       
+        return ResponseEntity.status(HttpStatus.OK).body(propertyCalculatorservice.totalArea(request));
     }
     @PostMapping("/pricePrice")
-    public ResponseEntity<PropertyPriceResponseDTO> totalPrice(@Valid 
-                                                               @RequestBody 
-                                                               PropertyPriceRequestDTO property){
+    public ResponseEntity<PropertyPriceResponseDTO> totalPrice(
+            @Valid 
+            @RequestBody 
+            PropertyPriceRequestDTO property){
+        
         return ResponseEntity.status(HttpStatus.OK)
                              .body(propertyCalculatorservice.totalPrice(property));
     }
