@@ -50,7 +50,7 @@ public class PropertyCalculatorController {
 
         return ResponseEntity.status(HttpStatus.OK).body(propertyCalculatorservice.biggestRoom(property));
     }
-    @PostMapping("/rooms_are")
+    @PostMapping("/rooms_area")
     public ResponseEntity<PropertyGetAreaRoomsResponseDTO> areaPerRoom(
             @Valid 
             @RequestBody 

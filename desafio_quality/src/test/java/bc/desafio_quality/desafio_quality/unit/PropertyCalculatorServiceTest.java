@@ -1,4 +1,4 @@
-package bc.desafio_quality.desafio_quality;
+package bc.desafio_quality.desafio_quality.unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
