@@ -1,7 +1,6 @@
 package bc.desafio_quality.desafio_quality;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,7 +49,6 @@ public class PropertyCalculatorServiceTest {
         
     @Test
     public void testGetTotalPrice(){
-        when(districtRepository.getByName("Mooca")).thenReturn(mockedDistrictDTO);
         PropertyPriceResponseDTO response = service.totalPrice(mockedPriceRequest);
         assertEquals(mockedPriceResponse.getPrice(), response.getPrice());
     }
@@ -58,13 +56,12 @@ public class PropertyCalculatorServiceTest {
     @Test
     public void testGetBiggestRoom(){
         PropertyBiggestRoomResponseDTO response = service.biggestRoom(mockedRoomResquest);
-        assertEquals(mockedRoomResponse, response);
+        assertEquals(mockedRoomResponse.getBiggestRoom().getRoom_name(), response.getBiggestRoom().getRoom_name());
     }
 
     @Test
     public void testGetAreaOfRooms(){
         PropertyGetAreaRoomsResponseDTO response = service.areaPerRoom(mockedRoomsAreaRequest);
-        assertEquals(mockedRoomsAreaResponse, response);
-        
+        assertEquals(mockedRoomsAreaResponse.getRooms().get("cozinha"), response.getRooms().get("cozinha"));
     }
 }

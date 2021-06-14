@@ -21,5 +21,5 @@ public class PropertyBiggestRoomResponseDTO {
     private RoomDTO biggestRoom;
 
     @JsonProperty("biggest_room_area")
-    private Double biggestRoomArea;
+    private Double biggestRoomArea = 0D;
 }

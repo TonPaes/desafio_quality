@@ -23,9 +23,9 @@ public class MocksDTO {
     static public List<RoomDTO> getMockRoomListDTO(){
         List<RoomDTO> list = new ArrayList<RoomDTO>();
         
-        list.add(new RoomDTO("quarto", 5D, 5D)); //25
         list.add(new RoomDTO("cozinha", 4D, 5.8D )); //23 ,2
         list.add(new RoomDTO("sala", 10D, 12D )); // 120
+        list.add(new RoomDTO("quarto", 5D, 5D)); //25
 
         return list;
     }
@@ -43,7 +43,7 @@ public class MocksDTO {
     }
 
     static public PropertyPriceResponseDTO getPropertyPriceResponseDTO(){
-        return new PropertyPriceResponseDTO(150D, "casa_do_ton", "Mooca");
+        return new PropertyPriceResponseDTO(1682D, "casa_do_ton", "Mooca");
     }
 
     static public PropertyBiggestRoomRequestDTO getPropertyBiggestRoomRequestDTO(){
@@ -67,9 +67,9 @@ public class MocksDTO {
 
     private static Map<String, Double> getMapRoomAreas(){
         Map<String,Double> rooms = Map.of(
-                "quarto", 25D,
-                "cozinha", 23.2D,
-                "sala", 120D        
+            "cozinha", 23.2D,
+                "sala", 120D,        
+                "quarto", 25D          
         );
         return rooms;
     }

@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bc.desafio_quality.dto.PropertyTotalAreaRequestDTO;
 import bc.desafio_quality.dto.PropertyTotalAreaResponseDTO;
+import bc.desafio_quality.dto.PropertyBiggestRoomRequestDTO;
+import bc.desafio_quality.dto.PropertyBiggestRoomResponseDTO;
+import bc.desafio_quality.dto.PropertyGetAreaRoomsRequestDTO;
+import bc.desafio_quality.dto.PropertyGetAreaRoomsResponseDTO;
 import bc.desafio_quality.dto.PropertyPriceRequestDTO;
 import bc.desafio_quality.dto.PropertyPriceResponseDTO;
 import bc.desafio_quality.service.PropertyCalculatorService;
@@ -29,7 +33,7 @@ public class PropertyCalculatorController {
        
         return ResponseEntity.status(HttpStatus.OK).body(propertyCalculatorservice.totalArea(request));
     }
-    @PostMapping("/pricePrice")
+    @PostMapping("/price")
     public ResponseEntity<PropertyPriceResponseDTO> totalPrice(
             @Valid 
             @RequestBody 
@@ -37,5 +41,21 @@ public class PropertyCalculatorController {
         
         return ResponseEntity.status(HttpStatus.OK)
                              .body(propertyCalculatorservice.totalPrice(property));
+    }
+    @PostMapping("/biggest_room")
+    public ResponseEntity<PropertyBiggestRoomResponseDTO> biggestRoom(
+            @Valid 
+            @RequestBody 
+            PropertyBiggestRoomRequestDTO property){
+
+        return ResponseEntity.status(HttpStatus.OK).body(propertyCalculatorservice.biggestRoom(property));
+    }
+    @PostMapping("/rooms_are")
+    public ResponseEntity<PropertyGetAreaRoomsResponseDTO> areaPerRoom(
+            @Valid 
+            @RequestBody 
+            PropertyGetAreaRoomsRequestDTO property){
+        
+        return ResponseEntity.status(HttpStatus.OK).body(propertyCalculatorservice.areaPerRoom(property));
     }
 }
