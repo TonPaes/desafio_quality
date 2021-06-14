@@ -10,6 +10,6 @@ public class DistrictDoestNotExistsException extends RuntimeException {
     private HttpStatus status = HttpStatus.NOT_FOUND;
     
     public DistrictDoestNotExistsException(String district){
-        this.message = "District"+ district + "does not exist";
+        this.message = "District "+ district + " does not exist";
     }
 }
